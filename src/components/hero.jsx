@@ -1,128 +1,293 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { personalDetails } from '../constants';
-import { Link } from 'lucide-react';
-
-// 1. IMPORT YOUR IMAGE HERE
-// If you have a file, uncomment the line below and comment out the placeholder
-// import profileImg from '../assets/profile.jpg'; 
-
-// For now, using a placeholder so it works immediately:
-const profileImg = "https://placehold.co/400x400/1e293b/22d3ee?text=Me"; 
+import { FiArrowDown, FiExternalLink } from 'react-icons/fi';
+import GlitchText from './GlitchText';
+import MagneticButton from './MagneticButton';
 
 const Hero = () => {
+  // Typing effect
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+  const [typingSpeed, setTypingSpeed] = useState(100);
 
-  const textArray = [personalDetails.name]; 
-  const period = 2000;
+  const textArray = personalDetails.taglines || [personalDetails.role];
 
   useEffect(() => {
-    let ticker = setTimeout(() => {
-      handleType();
+    const ticker = setTimeout(() => {
+      const i = loopNum % textArray.length;
+      const fullText = textArray[i];
+
+      setText(isDeleting
+        ? fullText.substring(0, text.length - 1)
+        : fullText.substring(0, text.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 40 : 100);
+
+      if (!isDeleting && text === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+        setTypingSpeed(2000);
+      } else if (isDeleting && text === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(100);
+      }
     }, typingSpeed);
 
     return () => clearTimeout(ticker);
   }, [text, isDeleting]);
 
-  const handleType = () => {
-    const i = loopNum % textArray.length;
-    const fullText = textArray[i];
-
-    setText(isDeleting 
-      ? fullText.substring(0, text.length - 1) 
-      : fullText.substring(0, text.length + 1)
-    );
-
-    setTypingSpeed(isDeleting ? 50 : 150);
-
-    if (!isDeleting && text === fullText) {
-      setTimeout(() => setIsDeleting(true), period); 
-      setTypingSpeed(period); 
-    } else if (isDeleting && text === '') {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-      setTypingSpeed(150);
-    }
-  };
-
   return (
-    <section 
-      id="about" 
-      className="min-h-screen flex items-center justify-center px-6 md:px-20 pt-20"
+    <section
+      id="about"
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '120px 24px 80px',
+        position: 'relative',
+      }}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-20">
-        
-        {/* LEFT SIDE: TEXT */}
-        <div className="flex-1 text-center md:text-left">
-          <motion.p 
+      {/* Ambient glow blobs */}
+      <div style={{
+        position: 'absolute',
+        top: '20%',
+        left: '10%',
+        width: 400,
+        height: 400,
+        background: 'radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(60px)',
+        animation: 'glow-pulse 8s ease-in-out infinite',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '20%',
+        right: '10%',
+        width: 350,
+        height: 350,
+        background: 'radial-gradient(circle, rgba(180, 74, 255, 0.06) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(60px)',
+        animation: 'glow-pulse 10s ease-in-out infinite 2s',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{
+        maxWidth: 1100,
+        margin: '0 auto',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 60,
+        flexWrap: 'wrap',
+      }}>
+
+        {/* LEFT — Text Content */}
+        <div style={{ flex: '1 1 500px', minWidth: 300 }}>
+          {/* Terminal greeting */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-cyan-400 font-mono mb-4 text-sm md:text-base"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.9rem',
+              color: 'var(--accent-cyan)',
+              marginBottom: 16,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+            }}
           >
-            Hi, my name is
-          </motion.p>
-          
-          <h1 className="text-4xl md:text-7xl font-bold text-slate-100 mb-4 leading-tight h-[60px] md:h-[90px]">
-            {text}
-            <span className="border-r-4 border-cyan-400 ml-1 animate-pulse"></span>
-          </h1>
-          
-          <motion.h2 
+            <span style={{
+              display: 'inline-block',
+              width: 12,
+              height: 12,
+              borderRadius: '50%',
+              background: 'var(--accent-cyan)',
+              boxShadow: '0 0 10px var(--accent-cyan)',
+            }} />
+            Hi there, my name is
+          </motion.div>
+
+          {/* Name with glitch */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{
+              fontSize: 'clamp(2.5rem, 7vw, 5rem)',
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 800,
+              lineHeight: 1.1,
+              marginBottom: 8,
+              color: 'var(--text-primary)',
+            }}
+          >
+            <GlitchText text={personalDetails.name} />
+          </motion.h1>
+
+          {/* Typing role */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            style={{
+              fontSize: 'clamp(1.2rem, 3vw, 2rem)',
+              fontFamily: 'var(--font-heading)',
+              fontWeight: 600,
+              color: 'var(--text-muted)',
+              marginBottom: 24,
+              minHeight: '2.4em',
+            }}
+          >
+            {'> '}
+            <span className="gradient-text">{text}</span>
+            <span style={{
+              borderRight: '3px solid var(--accent-cyan)',
+              marginLeft: 2,
+              animation: 'typing-cursor 1s step-end infinite',
+            }}>&nbsp;</span>
+          </motion.div>
+
+          {/* Bio */}
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="text-3xl md:text-5xl font-bold text-slate-400 mb-6 leading-tight"
-          >
-            I build things for the web.
-          </motion.h2>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="max-w-xl text-slate-400 text-base md:text-lg mb-10 leading-relaxed mx-auto md:mx-0"
+            style={{
+              maxWidth: 540,
+              fontSize: '1.05rem',
+              color: 'var(--text-secondary)',
+              lineHeight: 1.8,
+              marginBottom: 40,
+            }}
           >
             {personalDetails.bio}
           </motion.p>
-          
+
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}
           >
-            <a 
-              href="#projects"
-              className="inline-block border border-cyan-400 text-cyan-400 px-8 py-4 rounded hover:bg-cyan-400/10 transition-colors font-mono"
-            >
-              Check out my work
-            </a>
+            <MagneticButton href="#projects" className="cta-button-filled">
+              <span>View My Work</span>
+              <FiExternalLink size={16} />
+            </MagneticButton>
+            <MagneticButton href="#contact">
+              <span>Get In Touch</span>
+            </MagneticButton>
           </motion.div>
         </div>
 
-        {/* RIGHT SIDE: IMAGE */}
-        <div className="flex-1 flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="relative group"
-          >
-            {/* Glow Effect behind image */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-            
-            <img 
-              src='https://res.cloudinary.com/drrhzkpxn/image/upload/v1767373207/ChatGPT_Image_Jan_2_2026_09_59_32_PM_bytjxn.png' 
-              alt="Profile" 
-              className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-slate-800 shadow-2xl"
+        {/* RIGHT — Profile Image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          style={{
+            flex: '0 0 auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <div style={{ position: 'relative' }}>
+            {/* Orbital ring */}
+            <div style={{
+              position: 'absolute',
+              inset: -30,
+              border: '1px solid rgba(0, 240, 255, 0.1)',
+              borderRadius: '50%',
+              animation: 'rotate-slow 20s linear infinite',
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: -4,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 8,
+                height: 8,
+                borderRadius: '50%',
+                background: 'var(--accent-cyan)',
+                boxShadow: '0 0 15px var(--accent-cyan)',
+              }} />
+            </div>
+
+            {/* Second ring */}
+            <div style={{
+              position: 'absolute',
+              inset: -50,
+              border: '1px dashed rgba(180, 74, 255, 0.08)',
+              borderRadius: '50%',
+              animation: 'rotate-slow 30s linear infinite reverse',
+            }}>
+              <div style={{
+                position: 'absolute',
+                bottom: -4,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 6,
+                height: 6,
+                borderRadius: '50%',
+                background: 'var(--accent-purple)',
+                boxShadow: '0 0 15px var(--accent-purple)',
+              }} />
+            </div>
+
+            {/* Glow behind image */}
+            <div style={{
+              position: 'absolute',
+              inset: -10,
+              background: 'var(--gradient-main)',
+              borderRadius: '50%',
+              filter: 'blur(40px)',
+              opacity: 0.15,
+            }} />
+
+            <img
+              src={personalDetails.profileImage}
+              alt={personalDetails.name}
+              style={{
+                position: 'relative',
+                width: 'clamp(200px, 25vw, 300px)',
+                height: 'clamp(200px, 25vw, 300px)',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                border: '3px solid rgba(0, 240, 255, 0.15)',
+                boxShadow: '0 0 40px rgba(0, 0, 0, 0.5)',
+              }}
             />
-          </motion.div>
-        </div>
-
+          </div>
+        </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.a
+        href="#skills"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        style={{
+          position: 'absolute',
+          bottom: 32,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          color: 'var(--text-muted)',
+          animation: 'bounce-down 2s ease-in-out infinite',
+          textDecoration: 'none',
+        }}
+      >
+        <FiArrowDown size={22} />
+      </motion.a>
     </section>
   );
 };

@@ -1,114 +1,287 @@
 import { useRef, useState } from 'react';
-import { Mail, Send, Loader2 } from 'lucide-react';
+import { FiSend, FiLoader, FiMail, FiMapPin, FiClock } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
+import ScrollReveal from './ScrollReveal';
 
 const Contact = () => {
   const form = useRef();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' or 'error'
+  const [status, setStatus] = useState(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatus(null);
 
-    // Replace these with your actual EmailJS keys
-    // Service ID, Template ID, Public Key
     emailjs.sendForm('service_7ufh8js', 'template_7btb66l', form.current, 'ADzU_7t0d5j-IuZz-')
-      .then((result) => {
-          setIsSubmitting(false);
-          setStatus('success');
-          form.current.reset(); // Clear the form
+      .then(() => {
+        setIsSubmitting(false);
+        setStatus('success');
+        form.current.reset();
       }, (error) => {
-          setIsSubmitting(false);
-          setStatus('error');
-          console.log(error.text);
+        setIsSubmitting(false);
+        setStatus('error');
+        console.log(error.text);
       });
   };
 
+  const contactInfo = [
+    {
+      icon: FiMail,
+      label: "Email",
+      value: "meeran.official1255@gmail.com",
+      href: "mailto:meeran.official1255@gmail.com",
+    },
+    {
+      icon: FiMapPin,
+      label: "Location",
+      value: "Pakistan",
+    },
+    {
+      icon: FiClock,
+      label: "Availability",
+      value: "Open to opportunities",
+    },
+  ];
+
   return (
-    <section id="contact" className="py-20 px-6 md:px-20 max-w-4xl mx-auto">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-blue-400/80 mb-4">
-          Get In Touch
-        </h2>
-        <p className="text-slate-400 max-w-md mx-auto">
-          Whether you have a question or just want to say hi, my inbox is always open.
-        </p>
-      </div>
+    <section id="contact" className="section-padding">
+      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+        <ScrollReveal>
+          <p className="section-subtitle" style={{ textAlign: 'center' }}>
+            // let's connect
+          </p>
+          <h2 className="section-title gradient-text" style={{ textAlign: 'center', marginBottom: 16 }}>
+            Get In Touch
+          </h2>
+          <p style={{
+            textAlign: 'center',
+            color: 'var(--text-secondary)',
+            maxWidth: 480,
+            margin: '0 auto 60px',
+            fontSize: '1rem',
+          }}>
+            Whether you have a question or just want to say hi, my inbox is always open.
+            I'll try my best to get back to you!
+          </p>
+        </ScrollReveal>
 
-      <div className="grid md:grid-cols-2 gap-10">
-        
-        {/* Contact Info Side */}
-        <div className="space-y-6">
-          <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
-            <h3 className="text-xl text-slate-100 font-semibold mb-2">Contact Info</h3>
-            <div className="flex items-center gap-3 text-slate-400 mb-4">
-              <Mail className="w-5 h-5 text-cyan-400" />
-              <a href="mailto:meeran.official1255@gmail.com" className="hover:text-cyan-400">meeran.official1255@gmail.com</a>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
+          gap: 40,
+        }}>
+          {/* Info Side */}
+          <ScrollReveal direction="left" delay={0.1}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {contactInfo.map((item, i) => (
+                <div
+                  key={i}
+                  className="glass-card"
+                  style={{
+                    padding: 24,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 16,
+                  }}
+                >
+                  <div style={{
+                    width: 48,
+                    height: 48,
+                    borderRadius: 'var(--radius-sm)',
+                    background: 'rgba(0, 240, 255, 0.06)',
+                    border: '1px solid rgba(0, 240, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                  }}>
+                    <item.icon size={20} style={{ color: 'var(--accent-cyan)' }} />
+                  </div>
+                  <div>
+                    <p style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.72rem',
+                      color: 'var(--text-muted)',
+                      letterSpacing: '1px',
+                      textTransform: 'uppercase',
+                      marginBottom: 4,
+                    }}>
+                      {item.label}
+                    </p>
+                    {item.href ? (
+                      <a href={item.href} style={{
+                        color: 'var(--text-primary)',
+                        textDecoration: 'none',
+                        fontSize: '0.9rem',
+                        transition: 'color 0.3s',
+                      }}
+                        onMouseEnter={(e) => e.target.style.color = 'var(--accent-cyan)'}
+                        onMouseLeave={(e) => e.target.style.color = 'var(--text-primary)'}
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p style={{ color: 'var(--text-primary)', fontSize: '0.9rem' }}>
+                        {item.value}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {/* Status indicator */}
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                padding: '16px 24px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.8rem',
+                color: 'var(--text-muted)',
+              }}>
+                <span style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  background: '#00ff88',
+                  boxShadow: '0 0 10px #00ff88',
+                  animation: 'glow-pulse 2s ease-in-out infinite',
+                }} />
+                Currently available for work
+              </div>
             </div>
-            <p className="text-sm text-slate-500">
-              I am currently available for freelance work and open to full-time opportunities.
-            </p>
-          </div>
+          </ScrollReveal>
+
+          {/* Form Side */}
+          <ScrollReveal direction="right" delay={0.2}>
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="glass-card"
+              style={{ padding: 32, display: 'flex', flexDirection: 'column', gap: 20 }}
+            >
+              <div>
+                <label style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  marginBottom: 8,
+                  display: 'block',
+                }}>
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="user_name"
+                  required
+                  className="form-input"
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  marginBottom: 8,
+                  display: 'block',
+                }}>
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="user_email"
+                  required
+                  className="form-input"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-muted)',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase',
+                  marginBottom: 8,
+                  display: 'block',
+                }}>
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows="4"
+                  className="form-input"
+                  placeholder="Hello, I'd like to talk about..."
+                  style={{ resize: 'vertical', minHeight: 120 }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="cta-button cta-button-filled"
+                style={{
+                  width: '100%',
+                  justifyContent: 'center',
+                  padding: '16px 32px',
+                  opacity: isSubmitting ? 0.6 : 1,
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                }}
+              >
+                {isSubmitting ? (
+                  <>
+                    <FiLoader size={18} style={{ animation: 'rotate-slow 1s linear infinite' }} />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <FiSend size={18} />
+                    <span>Send Message</span>
+                  </>
+                )}
+              </button>
+
+              {/* Status Messages */}
+              {status === 'success' && (
+                <div style={{
+                  padding: '12px 16px',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'rgba(0, 255, 136, 0.08)',
+                  border: '1px solid rgba(0, 255, 136, 0.2)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  color: '#00ff88',
+                  textAlign: 'center',
+                }}>
+                  ✓ Message sent successfully!
+                </div>
+              )}
+              {status === 'error' && (
+                <div style={{
+                  padding: '12px 16px',
+                  borderRadius: 'var(--radius-sm)',
+                  background: 'rgba(255, 45, 149, 0.08)',
+                  border: '1px solid rgba(255, 45, 149, 0.2)',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.8rem',
+                  color: 'var(--accent-pink)',
+                  textAlign: 'center',
+                }}>
+                  ✗ Something went wrong. Please try again.
+                </div>
+              )}
+            </form>
+          </ScrollReveal>
         </div>
-
-        {/* Form Side */}
-        <form ref={form} onSubmit={sendEmail} className="space-y-4">
-          <div>
-            <label className="block text-sm font-mono text-slate-400 mb-2">Name</label>
-            <input 
-              type="text" 
-              name="user_name" 
-              required
-              className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-slate-100 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="John Doe"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-mono text-slate-400 mb-2">Email</label>
-            <input 
-              type="email" 
-              name="user_email" 
-              required
-              className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-slate-100 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="john@example.com"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-mono text-slate-400 mb-2">Message</label>
-            <textarea 
-              name="message" 
-              required
-              rows="4"
-              className="w-full bg-slate-800 border border-slate-700 rounded p-3 text-slate-100 focus:outline-none focus:border-cyan-400 transition-colors"
-              placeholder="Hello, I'd like to talk about..."
-            ></textarea>
-          </div>
-
-          <button 
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-cyan-400/10 text-cyan-400 border border-cyan-400 py-3 rounded font-mono hover:bg-cyan-400 hover:text-slate-900 transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isSubmitting ? (
-              <> <Loader2 className="animate-spin" size={18} /> Sending... </>
-            ) : (
-              <> <Send size={18} /> Send Message </>
-            )}
-          </button>
-
-          {/* Success/Error Message */}
-          {status === 'success' && (
-            <p className="text-green-400 text-sm font-mono mt-2">Message sent successfully!</p>
-          )}
-          {status === 'error' && (
-            <p className="text-red-400 text-sm font-mono mt-2">Something went wrong. Please try again.</p>
-          )}
-        </form>
-
       </div>
     </section>
   );
