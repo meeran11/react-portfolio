@@ -45,7 +45,7 @@ const Experience = () => {
                 }} />
 
                 {/* Card */}
-                <div className="glass-card" style={{ padding: 28 }}>
+                <div className="glass-card card-padding-lg">
                   <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',

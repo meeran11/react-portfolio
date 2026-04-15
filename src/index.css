@@ -195,6 +195,7 @@ body::before {
   border-radius: inherit;
   background: var(--gradient-main);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -212,6 +213,43 @@ body::before {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease infinite;
 }
+
+.card-padding {
+  padding: 16px;
+}
+
+@media (min-width: 768px) {
+  .card-padding {
+    padding: 24px;
+  }
+}
+
+.card-padding-lg {
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .card-padding-lg {
+    padding: 32px;
+  }
+}
+
+.hero-content {
+  flex: 1 1 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero-content {
+    flex: 1 1 500px;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
 
 .section-padding {
   padding: 100px 24px;
@@ -243,6 +281,19 @@ body::before {
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 12px;
+}
+
+.cta-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .cta-container {
+    justify-content: flex-start;
+  }
 }
 
 /* ===== GLITCH EFFECT ===== */
@@ -301,9 +352,9 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 32px;
+  padding: 10px 20px;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.5px;
   color: var(--accent-cyan);
@@ -314,6 +365,13 @@ body::before {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .cta-button {
+    padding: 14px 32px;
+    font-size: 0.9rem;
+  }
 }
 
 .cta-button::before {

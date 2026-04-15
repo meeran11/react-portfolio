@@ -77,9 +77,8 @@ const Contact = () => {
               {contactInfo.map((item, i) => (
                 <div
                   key={i}
-                  className="glass-card"
+                  className="glass-card card-padding"
                   style={{
-                    padding: 24,
                     display: 'flex',
                     alignItems: 'center',
                     gap: 16,
@@ -158,8 +157,8 @@ const Contact = () => {
             <form
               ref={form}
               onSubmit={sendEmail}
-              className="glass-card"
-              style={{ padding: 32, display: 'flex', flexDirection: 'column', gap: 20 }}
+              className="glass-card card-padding-lg"
+              style={{ display: 'flex', flexDirection: 'column', gap: 20 }}
             >
               <div>
                 <label style={{

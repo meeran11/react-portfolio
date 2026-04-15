@@ -14,7 +14,7 @@ const TechStack = () => {
 
   return (
     <section id="skills" className="section-padding" style={{ background: 'var(--bg-secondary)' }}>
-      <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+      <div style={{ maxWidth: 1000, margin: '0 auto'}}>
         <ScrollReveal>
           <p className="section-subtitle" style={{ textAlign: 'center' }}>
             // what I work with
@@ -62,9 +62,10 @@ const TechStack = () => {
         <motion.div
           layout
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-            gap: 20,
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: 20
           }}
         >
           {filteredSkills.map((skill, i) => (
@@ -77,6 +78,7 @@ const TechStack = () => {
               transition={{ duration: 0.3, delay: i * 0.05 }}
               className="glass-card"
               style={{
+                width: 150,
                 padding: 24,
                 display: 'flex',
                 flexDirection: 'column',

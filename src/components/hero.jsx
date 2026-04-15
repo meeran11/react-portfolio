@@ -47,7 +47,7 @@ const Hero = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '120px 24px 80px',
+        padding: 'clamp(60px, 10vh, 100px) 16px clamp(40px, 8vh, 80px)',
         position: 'relative',
       }}
     >
@@ -56,8 +56,8 @@ const Hero = () => {
         position: 'absolute',
         top: '20%',
         left: '10%',
-        width: 400,
-        height: 400,
+        width: 'clamp(250px, 40vw, 400px)',
+        height: 'clamp(250px, 40vw, 400px)',
         background: 'radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
@@ -68,8 +68,8 @@ const Hero = () => {
         position: 'absolute',
         bottom: '20%',
         right: '10%',
-        width: 350,
-        height: 350,
+        width: 'clamp(200px, 35vw, 350px)',
+        height: 'clamp(200px, 35vw, 350px)',
         background: 'radial-gradient(circle, rgba(180, 74, 255, 0.06) 0%, transparent 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
@@ -83,12 +83,13 @@ const Hero = () => {
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        gap: 60,
+        justifyContent: 'center',
+        gap: 'clamp(20px, 4vh, 60px)',
         flexWrap: 'wrap',
       }}>
 
         {/* LEFT — Text Content */}
-        <div style={{ flex: '1 1 500px', minWidth: 300 }}>
+        <div className="hero-content">
           {/* Terminal greeting */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -165,7 +166,7 @@ const Hero = () => {
               fontSize: '1.05rem',
               color: 'var(--text-secondary)',
               lineHeight: 1.8,
-              marginBottom: 40,
+              marginBottom: 'clamp(20px, 4vh, 40px)',
             }}
           >
             {personalDetails.bio}
@@ -176,7 +177,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}
+            className="cta-container"
           >
             <MagneticButton href="#projects" className="cta-button-filled">
               <span>View My Work</span>
@@ -258,8 +259,8 @@ const Hero = () => {
               alt={personalDetails.name}
               style={{
                 position: 'relative',
-                width: 'clamp(200px, 25vw, 300px)',
-                height: 'clamp(200px, 25vw, 300px)',
+                width: 'clamp(140px, 40vw, 300px)',
+                height: 'clamp(140px, 40vw, 300px)',
                 borderRadius: '50%',
                 objectFit: 'cover',
                 border: '3px solid rgba(0, 240, 255, 0.15)',

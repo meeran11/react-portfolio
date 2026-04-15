@@ -55,7 +55,7 @@ const Navbar = () => {
       <div style={{
         maxWidth: 1100,
         margin: '0 auto',
-        padding: '16px 24px',
+        padding: '16px clamp(16px, 4vw, 24px)',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
