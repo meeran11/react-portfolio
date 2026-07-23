@@ -7,18 +7,19 @@
   --bg-tertiary: #1a1a2e;
   --bg-card: rgba(18, 18, 26, 0.7);
 
-  --accent-cyan: #00f0ff;
-  --accent-purple: #b44aff;
-  --accent-pink: #ff2d95;
+  --accent-cyan: #22d3ee;
+  --accent-magenta: #ec4899;
+  --accent-violet: #8b5cf6;
   --accent-blue: #4a90ff;
 
   --text-primary: #e8e8f0;
   --text-secondary: #8888a8;
   --text-muted: #555570;
 
-  --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-  --gradient-warm: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-  --gradient-cool: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+  --gradient-main: linear-gradient(135deg, var(--accent-violet) 0%, var(--accent-magenta) 50%, var(--accent-cyan) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--accent-magenta), var(--accent-violet));
+  --gradient-cool: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+  --gradient-aurora: linear-gradient(90deg, var(--accent-violet), var(--accent-magenta), var(--accent-cyan));
 
   --glass-bg: rgba(18, 18, 26, 0.6);
   --glass-border: rgba(255, 255, 255, 0.06);
@@ -143,6 +144,46 @@ body::before {
   to { height: 100%; }
 }
 
+@keyframes aurora-glow {
+  0%, 100% { 
+    opacity: 0.3;
+    filter: blur(40px);
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.6;
+    filter: blur(60px);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes aurora-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes scale-in-up {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes hover-lift {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes magnetic-hover {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.15); }
+}
+
 /* ===== UTILITY CLASSES ===== */
 .gradient-text {
   background: var(--gradient-main);
@@ -202,7 +243,17 @@ body::before {
 }
 
 .glow-cyan {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 60px rgba(0, 240, 255, 0.05);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.2), 0 0 60px rgba(34, 211, 238, 0.1);
+}
+
+.glow-aurora {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.25), 0 0 60px rgba(236, 72, 153, 0.15), 0 0 90px rgba(34, 211, 238, 0.1);
+}
+
+.aurora-gradient-bg {
+  background: var(--gradient-aurora);
+  background-size: 200% 200%;
+  animation: aurora-shift 6s ease infinite;
 }
 
 .animate-float {

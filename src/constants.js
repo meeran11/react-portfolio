@@ -10,14 +10,15 @@ import { TbBrandRedux } from 'react-icons/tb';
 
 export const personalDetails = {
   name: "Meeran",
-  role: "Full Stack Developer",
+  role: "Full Stack & AI Engineer",
   taglines: [
     "Full Stack Developer",
-    "Backend Architect",
-    "UI/UX Enthusiast",
+    "AI Architect",
+    "Backend Engineer",
+    "UI/UX Craftsman",
     "Problem Solver"
   ],
-  bio: "I craft robust, pixel-perfect web applications with clean code and thoughtful architecture. Passionate about building things that live on the internet — from interactive front-ends to scalable backend systems.",
+  bio: "Full Stack & AI Engineer crafting robust, pixel-perfect web applications with clean code and thoughtful architecture. Passionate about building intelligent systems that live on the internet — from interactive front-ends to scalable backends and AI-powered experiences.",
   email: "meeran.official255@gmail.com",
   profileImage: "https://res.cloudinary.com/drrhzkpxn/image/upload/v1767373207/ChatGPT_Image_Jan_2_2026_09_59_32_PM_bytjxn.png",
 };
@@ -64,15 +65,29 @@ export const skills = skillCategories.flatMap(cat => cat.skills);
 
 export const projects = [
   {
+    title: "RAG Video Agent",
+    description: "AI-powered video analysis and question-answering system leveraging retrieval-augmented generation. Automatically indexes video content and answers user queries with precise timestamps and context.",
+    tech: ["React", "Python", "Pinecone", "OpenAI", "Node.js"],
+    link: "#",
+    featured: true,
+  },
+  {
+    title: "Multi-Agent Research Studio",
+    description: "Collaborative AI research platform with specialized agents for data analysis, literature review, and hypothesis generation. Demonstrates autonomous agent orchestration and tool integration.",
+    tech: ["Next.js", "LangChain", "PostgreSQL", "React", "TypeScript"],
+    link: "#",
+    featured: true,
+  },
+  {
     title: "Car Rental Platform",
-    description: "A full-stack car rental application with user authentication, real-time booking system, and admin dashboard for fleet management.",
+    description: "Full-stack car rental application with user authentication, real-time booking system, and admin dashboard for fleet management. Handles complex inventory and reservation workflows.",
     tech: ["React", "Tailwind CSS", "PostgreSQL", "Node.js", "Express"],
     link: "https://car-rental-system-demo-one.vercel.app/",
     featured: false,
   },
   {
     title: "Drive Lite",
-    description: "A cloud storage solution inspired by Google Drive with file upload, folder management, and sharing capabilities with a clean UI.",
+    description: "Cloud storage solution inspired by Google Drive with file upload, folder management, and sharing capabilities. Features real-time collaboration and secure file handling.",
     tech: ["Node.js", "MongoDB", "Express", "EJS"],
     link: "https://drivelite.vercel.app/",
     featured: false,
@@ -81,10 +96,17 @@ export const projects = [
 
 export const experience = [
   {
+    role: "Full Stack & AI Engineer",
+    type: "Independent Development",
+    period: "2024 - Present",
+    description: "Building production-grade applications combining full-stack development with AI/ML capabilities. Specializing in RAG systems, multi-agent architectures, and intelligent automation.",
+    highlights: ["LangChain", "AI Agents", "RAG Systems", "System Design", "TypeScript"],
+  },
+  {
     role: "Self-Taught Developer",
     type: "Continuous Learning",
-    period: "2023 - Present",
+    period: "2023 - 2024",
     description: "Deep-dived into full-stack development through hands-on projects, open source contributions, and systematic study of computer science fundamentals.",
-    highlights: ["JavaScript", "Data Structures", "System Design", "MongoDB"],
+    highlights: ["JavaScript", "React", "Data Structures", "MongoDB", "Node.js"],
   },
 ];

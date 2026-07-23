@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import { FiSend, FiLoader, FiMail, FiMapPin, FiClock } from 'react-icons/fi';
 import emailjs from '@emailjs/browser';
 import ScrollReveal from './ScrollReveal';
@@ -45,8 +46,39 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-padding">
-      <div style={{ maxWidth: 900, margin: '0 auto' }}>
+    <section 
+      id="contact" 
+      className="section-padding"
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Aurora background effects */}
+      <div style={{
+        position: 'absolute',
+        top: '-20%',
+        right: '-10%',
+        width: 500,
+        height: 500,
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(100px)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '-10%',
+        left: '-5%',
+        width: 400,
+        height: 400,
+        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(100px)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <ScrollReveal>
           <p className="section-subtitle" style={{ textAlign: 'center' }}>
             // let's connect
@@ -75,28 +107,34 @@ const Contact = () => {
           <ScrollReveal direction="left" delay={0.1}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {contactInfo.map((item, i) => (
-                <div
+                <motion.div
                   key={i}
                   className="glass-card card-padding"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: 16,
                   }}
                 >
-                  <div style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 'var(--radius-sm)',
-                    background: 'rgba(0, 240, 255, 0.06)',
-                    border: '1px solid rgba(0, 240, 255, 0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                  }}>
-                    <item.icon size={20} style={{ color: 'var(--accent-cyan)' }} />
-                  </div>
+                  <motion.div 
+                    whileHover={{ scale: 1.15, rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 'var(--radius-sm)',
+                      background: 'rgba(139, 92, 246, 0.1)',
+                      border: '1px solid rgba(139, 92, 246, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    <item.icon size={20} style={{ color: 'var(--accent-violet)' }} />
+                  </motion.div>
                   <div>
                     <p style={{
                       fontFamily: 'var(--font-mono)',
@@ -126,7 +164,7 @@ const Contact = () => {
                       </p>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
 
               {/* Status indicator */}
@@ -224,30 +262,48 @@ const Contact = () => {
                 />
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
                 className="cta-button cta-button-filled"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 style={{
                   width: '100%',
                   justifyContent: 'center',
                   padding: '16px 32px',
-                  opacity: isSubmitting ? 0.6 : 1,
+                  opacity: isSubmitting ? 0.7 : 1,
                   cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  background: isSubmitting 
+                    ? 'rgba(139, 92, 246, 0.6)' 
+                    : 'var(--gradient-main)',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               >
                 {isSubmitting ? (
                   <>
-                    <FiLoader size={18} style={{ animation: 'rotate-slow 1s linear infinite' }} />
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+                      style={{ display: 'flex' }}
+                    >
+                      <FiLoader size={18} />
+                    </motion.div>
                     <span>Sending...</span>
                   </>
                 ) : (
                   <>
-                    <FiSend size={18} />
+                    <motion.div
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ display: 'flex' }}
+                    >
+                      <FiSend size={18} />
+                    </motion.div>
                     <span>Send Message</span>
                   </>
                 )}
-              </button>
+              </motion.button>
 
               {/* Status Messages */}
               {status === 'success' && (

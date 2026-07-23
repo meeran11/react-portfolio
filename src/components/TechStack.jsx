@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import { skillCategories } from '../constants';
 
@@ -13,8 +13,40 @@ const TechStack = () => {
   const categories = ['All', ...skillCategories.map(c => c.title)];
 
   return (
-    <section id="skills" className="section-padding" style={{ background: 'var(--bg-secondary)' }}>
-      <div style={{ maxWidth: 1000, margin: '0 auto'}}>
+    <section 
+      id="skills" 
+      className="section-padding" 
+      style={{ 
+        background: 'var(--bg-secondary)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Aurora background blobs */}
+      <div style={{
+        position: 'absolute',
+        top: -100,
+        left: '10%',
+        width: 400,
+        height: 400,
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(80px)',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: -100,
+        right: '10%',
+        width: 350,
+        height: 350,
+        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(80px)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: 1000, margin: '0 auto', position: 'relative', zIndex: 1}}>
         <ScrollReveal>
           <p className="section-subtitle" style={{ textAlign: 'center' }}>
             // what I work with
@@ -68,45 +100,65 @@ const TechStack = () => {
             gap: 20
           }}
         >
-          {filteredSkills.map((skill, i) => (
-            <motion.div
-              key={skill.name}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="glass-card"
-              style={{
-                width: 150,
-                padding: 24,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 12,
-                cursor: 'default',
-              }}
-            >
-              <skill.icon
-                size={36}
-                style={{
-                  color: 'var(--text-secondary)',
-                  transition: 'color 0.3s ease',
+          <AnimatePresence mode="wait">
+            {filteredSkills.map((skill, i) => (
+              <motion.div
+                key={skill.name}
+                layout
+                initial={{ opacity: 0, scale: 0.6, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.6, y: -20 }}
+                transition={{ 
+                  duration: 0.4, 
+                  delay: i * 0.06,
+                  ease: 'easeOut'
                 }}
-                onMouseEnter={(e) => e.target.style.color = skill.color}
-                onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}
-              />
-              <span style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.75rem',
-                color: 'var(--text-secondary)',
-                textAlign: 'center',
-                letterSpacing: '0.5px',
-              }}>
-                {skill.name}
-              </span>
-            </motion.div>
-          ))}
+                whileHover={{ scale: 1.08, y: -4 }}
+                className="glass-card"
+                style={{
+                  width: 150,
+                  padding: 24,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 12,
+                  cursor: 'pointer',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                }}
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <skill.icon
+                    size={36}
+                    style={{
+                      color: 'var(--text-secondary)',
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.color = skill.color;
+                      e.target.style.filter = 'drop-shadow(0 0 10px ' + skill.color + ')';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.color = 'var(--text-secondary)';
+                      e.target.style.filter = 'none';
+                    }}
+                  />
+                </motion.div>
+                <span style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.75rem',
+                  color: 'var(--text-secondary)',
+                  textAlign: 'center',
+                  letterSpacing: '0.5px',
+                  transition: 'color 0.3s ease',
+                }}>
+                  {skill.name}
+                </span>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
       </div>
     </section>

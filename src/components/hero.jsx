@@ -51,17 +51,17 @@ const Hero = () => {
         position: 'relative',
       }}
     >
-      {/* Ambient glow blobs */}
+      {/* Aurora glow blobs */}
       <div style={{
         position: 'absolute',
         top: '20%',
         left: '10%',
         width: 'clamp(250px, 40vw, 400px)',
         height: 'clamp(250px, 40vw, 400px)',
-        background: 'radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
-        animation: 'glow-pulse 8s ease-in-out infinite',
+        animation: 'aurora-glow 8s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
       <div style={{
@@ -70,10 +70,22 @@ const Hero = () => {
         right: '10%',
         width: 'clamp(200px, 35vw, 350px)',
         height: 'clamp(200px, 35vw, 350px)',
-        background: 'radial-gradient(circle, rgba(180, 74, 255, 0.06) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
-        animation: 'glow-pulse 10s ease-in-out infinite 2s',
+        animation: 'aurora-glow 10s ease-in-out infinite 2s',
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: '60%',
+        right: '5%',
+        width: 'clamp(180px, 30vw, 300px)',
+        height: 'clamp(180px, 30vw, 300px)',
+        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%)',
+        borderRadius: '50%',
+        filter: 'blur(80px)',
+        animation: 'aurora-glow 12s ease-in-out infinite 4s',
         pointerEvents: 'none',
       }} />
 
@@ -244,14 +256,24 @@ const Hero = () => {
               }} />
             </div>
 
-            {/* Glow behind image */}
+            {/* Aurora glow layers */}
             <div style={{
               position: 'absolute',
-              inset: -10,
-              background: 'var(--gradient-main)',
+              inset: -20,
+              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, transparent 70%)',
+              borderRadius: '50%',
+              filter: 'blur(50px)',
+              opacity: 0.8,
+              animation: 'aurora-glow 6s ease-in-out infinite',
+            }} />
+            <div style={{
+              position: 'absolute',
+              inset: -15,
+              background: 'radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%)',
               borderRadius: '50%',
               filter: 'blur(40px)',
-              opacity: 0.15,
+              opacity: 0.6,
+              animation: 'aurora-glow 8s ease-in-out infinite 1s',
             }} />
 
             <img
@@ -263,8 +285,8 @@ const Hero = () => {
                 height: 'clamp(140px, 40vw, 300px)',
                 borderRadius: '50%',
                 objectFit: 'cover',
-                border: '3px solid rgba(0, 240, 255, 0.15)',
-                boxShadow: '0 0 40px rgba(0, 0, 0, 0.5)',
+                border: '2px solid rgba(34, 211, 238, 0.3)',
+                boxShadow: '0 0 40px rgba(34, 211, 238, 0.2), 0 0 60px rgba(139, 92, 246, 0.1)',
               }}
             />
           </div>
