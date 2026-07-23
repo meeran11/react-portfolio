@@ -1,0 +1,20 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173",
+  "loginUser": "test@test.com",
+  "loginPassword": "123456abc",
+  "executionArgs": {
+    "projectName": "portfolio",
+    "projectPath": "c:\\Users\\Meeran\\Desktop\\Projects\\portfolio",
+    "testIds": [],
+    "additionalInstruction": "",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-CkQy8Mip0a0j5tPSfU2pBe0ABV_gYSCm-MTETW3M5FdfFvOcmhKJH-SFjwpng3KAToNEetHPhZsYN_05gA4ZY1KNG4XZp00XRMUZJK34YYWMb0-6pZPv8jkddkZM89Nv8eM"
+    }
+  },
+  "serverPort": 49365,
+  "proxy": "http://f94f658b-08d9-48af-a56a-51b186908980:wV3hJeTdbeA9obPHxJouoEBRZIyQmJYP@tun.testsprite.com:8080"
+}

@@ -1,0 +1,130 @@
+version: "2"
+type: frontend
+tech_stack:
+  - JavaScript
+  - React 19
+  - Vite 7
+  - Tailwind CSS 4
+  - Framer Motion
+  - EmailJS
+  - Lucide React
+  - React Icons
+  - React Intersection Observer
+routes:
+  - path: /
+    file: src/App.jsx
+    auth_required: false
+    description: Main single-page portfolio with all sections (Hero, Tech Stack, Projects, Experience, Contact, Footer)
+features:
+  - name: Navigation Bar
+    description: Responsive top navigation with links to portfolio sections and mobile hamburger menu
+    files:
+      - src/components/NavBar.jsx
+    entry_route: /
+    user_interactions:
+      - Click navigation links to scroll to respective sections
+      - Toggle mobile hamburger menu on small screens
+      - See active section highlighted in navbar
+    api_calls: []
+    auth_required: false
+  - name: Hero Section
+    description: Landing hero section with animated introduction, name, role taglines with typing animation, bio, and social links
+    files:
+      - src/components/hero.jsx
+      - src/components/GlitchText.jsx
+      - src/constants.js
+    entry_route: /
+    user_interactions:
+      - View animated hero content with particle background
+      - Click social links (GitHub, LinkedIn, Email)
+      - See typing animation cycling through role taglines
+    api_calls: []
+    auth_required: false
+  - name: Particle Background
+    description: Interactive canvas-based particle animation background
+    files:
+      - src/components/ParticleBackground.jsx
+    entry_route: /
+    user_interactions:
+      - View animated particle background behind all content
+    api_calls: []
+    auth_required: false
+  - name: Tech Stack Section
+    description: Categorized display of technical skills (Frontend, Backend, Tools) with icons and colors
+    files:
+      - src/components/TechStack.jsx
+      - src/constants.js
+    entry_route: /
+    user_interactions:
+      - View categorized skill cards with icons
+      - Hover over skill items for interactive effects
+    api_calls: []
+    auth_required: false
+  - name: Projects Grid
+    description: Grid display of portfolio projects with descriptions, tech tags, and links
+    files:
+      - src/components/projectgrid.jsx
+      - src/constants.js
+    entry_route: /
+    user_interactions:
+      - View project cards with descriptions and tech stacks
+      - Click project links to visit live demos
+      - Hover over cards for interactive effects
+    api_calls: []
+    auth_required: false
+  - name: Experience Section
+    description: Timeline-style display of professional experience and learning journey
+    files:
+      - src/components/Experience.jsx
+      - src/constants.js
+    entry_route: /
+    user_interactions:
+      - View experience timeline entries
+      - See highlighted skills/technologies for each role
+    api_calls: []
+    auth_required: false
+  - name: Contact Form
+    description: Contact form with EmailJS integration for sending messages directly
+    files:
+      - src/components/Contact.jsx
+    entry_route: /
+    user_interactions:
+      - Fill in name input field
+      - Fill in email input field
+      - Fill in message textarea
+      - Click send/submit button to send message
+      - See success/error feedback after submission
+    api_calls:
+      - method: POST
+        endpoint: EmailJS API (external service)
+    auth_required: false
+  - name: Footer
+    description: Footer section with social links and copyright information
+    files:
+      - src/components/Footer.jsx
+      - src/constants.js
+    entry_route: /
+    user_interactions:
+      - Click social media links
+      - View copyright information
+    api_calls: []
+    auth_required: false
+  - name: Scroll Reveal Animations
+    description: Scroll-triggered reveal animations for content sections using Intersection Observer
+    files:
+      - src/components/ScrollReveal.jsx
+    entry_route: /
+    user_interactions:
+      - Scroll down to see sections animate into view
+    api_calls: []
+    auth_required: false
+  - name: Magnetic Button Effect
+    description: Interactive magnetic hover effect on buttons
+    files:
+      - src/components/MagneticButton.jsx
+    entry_route: /
+    user_interactions:
+      - Hover over buttons to see magnetic pull effect
+    api_calls: []
+    auth_required: false
+known_limitations: []

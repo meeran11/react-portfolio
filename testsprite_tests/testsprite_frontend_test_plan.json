@@ -1,0 +1,841 @@
+[
+  {
+    "id": "TC001",
+    "title": "Jump to Projects section from desktop navbar",
+    "description": "Verifies a visitor can use the desktop navigation to smoothly scroll to the Projects section and land with that section visible.",
+    "category": "Navigation Bar",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a desktop size"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link for Projects"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Projects section is in view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Navigate to Contact from mobile hamburger menu and auto-close",
+    "description": "Verifies a mobile visitor can open the hamburger menu, select Contact, and the menu closes after navigation with the Contact section visible.",
+    "category": "Navigation Bar",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Set the viewport to a small mobile size"
+      },
+      {
+        "type": "action",
+        "description": "Toggle the mobile navigation menu open"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation link for Contact"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the mobile navigation menu is closed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact section is in view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Hero animations and background render on first load",
+    "description": "Verifies the hero content loads with the particle background and the typing animation cycles without blocking the page.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the hero area to finish initial rendering"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the particle background is displayed behind the hero content"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the role tagline text changes over time"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Hero secondary CTA scrolls to Contact",
+    "description": "Verifies the secondary hero call-to-action scrolls the visitor to the Contact section.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the hero call-to-action to get in touch"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Contact section is in view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Active section highlight updates while scrolling",
+    "description": "Verifies the navbar updates the active section indication as the visitor scrolls through sections.",
+    "category": "Navigation Bar",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the Projects section is in view"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the Experience section is in view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navbar indicates Experience is the active section"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Send a contact message via the form",
+    "description": "This test verifies a visitor can submit the contact form with valid inputs and receives a success confirmation after the loading state completes.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Contact section"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Ava Tester\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"ava.tester@example.com\" into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"Hello, I would like to connect about an opportunity.\" into the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a loading state is shown while the message is being sent"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a success confirmation is visible indicating the message was sent"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Hero primary CTA scrolls to Projects",
+    "description": "Verifies the primary hero call-to-action scrolls the visitor to the Projects section.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the hero call-to-action to view work"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the Projects section is in view"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "View project cards with essential details",
+    "description": "Verifies a visitor can reach the Projects section and see project cards with titles, descriptions, and tech tags rendered.",
+    "category": "Projects Grid",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Projects section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple project cards are displayed with a title, description, and tech tags"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Open a project demo in a new tab from the projects grid",
+    "description": "Verifies a visitor can open an external project demo link and it opens in a new tab.",
+    "category": "Projects Grid",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Projects section"
+      },
+      {
+        "type": "action",
+        "description": "Click an external project demo link from a project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new browser tab opens to an external project demo page"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Open a footer social profile in a new tab",
+    "description": "This test verifies selecting a footer social icon opens the corresponding external profile in a new browser tab.",
+    "category": "Footer",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "action",
+        "description": "Click a social icon that links to an external profile"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an external page opens in a new tab"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Hero social links open external destinations",
+    "description": "Verifies social links from the hero open the expected external destination or mail intent in a new tab/window.",
+    "category": "Hero Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the GitHub social link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an external destination is opened for the GitHub profile"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click the LinkedIn social link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an external destination is opened for the LinkedIn profile"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Magnetic hover effect responds to pointer movement on a primary CTA",
+    "description": "Verifies that hovering over a prominent CTA triggers the magnetic pull effect and the button visually returns to its resting state when the pointer leaves.",
+    "category": "Magnetic Button Effect",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the hero section if it is not already in view"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a prominent call-to-action button in the hero section"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer around within the button area"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hovered button shows a subtle magnetic transform while hovered and returns to its default appearance when not hovered"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC013",
+    "title": "Open the email intent from the Contact info card",
+    "description": "This test verifies a visitor can click the Contact email info link and a mailto intent is initiated.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Contact section"
+      },
+      {
+        "type": "action",
+        "description": "Click the Email contact info link"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a mailto intent is initiated"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC014",
+    "title": "Browse Tech Stack with default Frontend category visible",
+    "description": "Verifies a visitor can reach the Tech Stack section and see the default category selected with its skills displayed.",
+    "category": "Tech Stack Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Tech Stack section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a tech stack category is selected by default and a list of frontend skills is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC015",
+    "title": "Experience timeline visual elements render",
+    "description": "Verifies a visitor can reach the Experience section and see the timeline line and timeline markers rendered.",
+    "category": "Experience Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Experience section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the experience timeline is displayed with a vertical line and timeline markers"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC016",
+    "title": "Trigger scroll reveal animations while scrolling",
+    "description": "This test verifies sections reveal as they enter the viewport during scroll and the content remains visible and usable.",
+    "category": "Scroll Reveal Animations",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down the page slowly"
+      },
+      {
+        "type": "action",
+        "description": "Continue scrolling until multiple sections have entered the viewport"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify sections become visible as they enter the viewport"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify revealed content remains interactable after the animation completes"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC017",
+    "title": "View all skills by switching to All category",
+    "description": "Verifies a visitor can switch to the All category and see skills from multiple categories displayed together.",
+    "category": "Tech Stack Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Tech Stack section"
+      },
+      {
+        "type": "action",
+        "description": "Select the All category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify skills from multiple categories are displayed in the Tech Stack section"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC018",
+    "title": "Magnetic hover effect works consistently on multiple buttons across sections",
+    "description": "Verifies that the magnetic hover effect triggers on buttons in different sections without breaking layout or interaction.",
+    "category": "Magnetic Button Effect",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over an interactive button or link-style button within the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the hovered control"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over the form submit button"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the hovered control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify interactive buttons in multiple sections show the magnetic transform on hover and remain usable after hover ends"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC019",
+    "title": "Filter skills to Backend category",
+    "description": "Verifies a visitor can filter the Tech Stack section to Backend and only backend skills are shown.",
+    "category": "Tech Stack Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Tech Stack section"
+      },
+      {
+        "type": "action",
+        "description": "Select the Backend category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only backend skills are displayed in the Tech Stack section"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC020",
+    "title": "View contact information cards in the Contact section",
+    "description": "This test verifies the Contact section displays the expected contact info cards so visitors can find email, location, and availability details.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Contact section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify contact info cards are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the contact form is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC021",
+    "title": "Keyboard navigation does not depend on magnetic hover to reveal or enable button actions",
+    "description": "Verifies that buttons remain accessible and visually focusable via keyboard without requiring hover behavior.",
+    "category": "Magnetic Button Effect",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Press Tab repeatedly until a primary call-to-action button receives focus"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter to activate the focused button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the focused button shows a visible focus indicator and can be activated via keyboard without requiring hover"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Experience entry shows complete role information",
+    "description": "Verifies an experience entry displays role details including type, period, description, and related tags.",
+    "category": "Experience Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Experience section"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to an experience entry card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an experience entry shows role information, a time period, a description, and skill or technology tags"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Navbar style changes after scrolling past threshold",
+    "description": "Verifies the navbar switches to an opaque/blurred style after the visitor scrolls down and remains styled while continuing to scroll.",
+    "category": "Navigation Bar",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down a small amount past the top of the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the navbar background appears opaque with blur"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "See social icons in the footer",
+    "description": "This test verifies the footer renders social icons so visitors can discover external profiles and email contact options.",
+    "category": "Footer",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the footer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify social icons are displayed for external profiles and email"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify copyright information is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Experience section adapts layout on narrow viewport",
+    "description": "Verifies the Experience section uses a responsive stacked layout on a narrow viewport without overlapping content.",
+    "category": "Experience Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Resize the viewport to a narrow mobile width"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Experience section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify experience entries render in a stacked responsive layout without overlap or truncation that blocks reading"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Magnetic effect does not cause page reflow or overlaps in a dense layout",
+    "description": "Verifies that the magnetic transform does not cause nearby elements to shift, overlap, or become obscured when hovering a button in a dense section.",
+    "category": "Magnetic Button Effect",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to a dense content area containing buttons near other elements"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a button that sits close to neighboring text or cards"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer around within the button area"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify nearby content does not shift or overlap due to the magnetic hover transform"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Particle background persists while scrolling page content",
+    "description": "Verifies the particle animation remains present behind content as the visitor scrolls through multiple sections.",
+    "category": "Particle Background",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the Tech Stack section is in view"
+      },
+      {
+        "type": "action",
+        "description": "Scroll down until the Projects section is in view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the particle background is still displayed behind the page content"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC028",
+    "title": "Magnetic hover effect remains stable during smooth scrolling between sections",
+    "description": "Verifies that after smooth scrolling to another section, hovering a button still produces the magnetic effect without jitter or stuck transforms.",
+    "category": "Magnetic Button Effect",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Use the navbar to jump to the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over an interactive button in the projects section"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the button"
+      },
+      {
+        "type": "action",
+        "description": "Use the navbar to jump to the contact section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over the contact form submit button"
+      },
+      {
+        "type": "action",
+        "description": "Move the pointer away from the button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify magnetic hover transforms trigger normally after in-page navigation and do not remain stuck after pointer leaves"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC029",
+    "title": "Prevent contact submission when required fields are empty",
+    "description": "This test verifies the contact form cannot be submitted with required fields empty and the browser shows required-field validation feedback.",
+    "category": "Contact Form",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Contact section"
+      },
+      {
+        "type": "action",
+        "description": "Submit the contact form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify HTML5 required-field validation prevents submission"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a required-field validation prompt is shown for at least one required field"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC030",
+    "title": "Skill hover interaction highlights without breaking layout",
+    "description": "Verifies hovering a skill item triggers a highlight effect and the skills layout remains stable.",
+    "category": "Tech Stack Section",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Tech Stack section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a skill item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hovered skill shows a visual highlight effect and the skill grid remains intact"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC031",
+    "title": "Project card hover shows lift/glow effect",
+    "description": "Verifies hovering a project card triggers the lift/glow interaction without preventing viewing project details.",
+    "category": "Projects Grid",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to the Projects section"
+      },
+      {
+        "type": "action",
+        "description": "Hover over a project card"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the hovered project card shows a lift or glow effect while remaining readable"
+      }
+    ],
+    "priority": "Low"
+  }
+]
